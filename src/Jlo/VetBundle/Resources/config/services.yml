@@ -1,0 +1,4 @@
+services:
+#    jlo_vet.example:
+#        class: Jlo\VetBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]

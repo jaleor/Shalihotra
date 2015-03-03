@@ -1,0 +1,71 @@
+<?php
+
+namespace Acme\DemoBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+
+/**
+ * @ORM\Entity
+ */
+class Post
+{
+    /**
+     * @ORM\Id
+     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    protected $id;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     *
+     * @Assert\NotBlank()
+     * @Assert\Length(min="10", max=255)
+     */
+    protected $title;
+
+    /**
+     * @ORM\Column(type="text")
+     */
+    protected $abstract;
+
+    /**
+     * @ORM\Column(type="text")
+     *
+     * @Assert\NotBlank()
+     */
+    protected $content;
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    protected $enabled;
+
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    protected $created_at;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Comment", mappedBy="post")
+     */
+    protected $comments;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="Tag")
+     */
+    protected $tags;
+
+    public function __construct()
+    {
+        $this->tags     = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->comments = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->created_at = new \DateTime("now");
+    }
+
+    public function __toString()
+    {
+        return $this->getTitle();
+    }
+}

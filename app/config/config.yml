@@ -1,0 +1,143 @@
+imports:
+    - { resource: parameters.yml }
+    - { resource: security.yml }
+    #- { resource: @AcmeDemoBundle/Resources/config/admin.xml }
+    
+framework:
+    #esi:             ~
+    translator:      { fallbacks: ["%locale%"] }
+    secret:          "%secret%"
+    router:
+        resource: "%kernel.root_dir%/config/routing.yml"
+        strict_requirements: ~
+    form:            ~
+    csrf_protection: ~
+    validation:      { enable_annotations: true }
+    templating:
+        engines: ['twig']
+        #assets_version: SomeVersionScheme
+    default_locale:  "%locale%"
+    trusted_proxies: ~
+    session:         ~
+    fragments:       ~
+    http_method_override: true
+
+# Twig Configuration
+twig:
+    debug:            "%kernel.debug%"
+    strict_variables: "%kernel.debug%"
+    form:
+        resources:
+            # ...
+            - 'SonataCoreBundle:Form:datepicker.html.twig'
+            
+# Assetic Configuration
+assetic:
+    debug:          "%kernel.debug%"
+    use_controller: false
+    bundles:        [ ]
+    #java: /usr/bin/java
+    filters:
+        cssrewrite: ~
+        #closure:
+        #    jar: "%kernel.root_dir%/Resources/java/compiler.jar"
+        #yui_css:
+        #    jar: "%kernel.root_dir%/Resources/java/yuicompressor-2.4.7.jar"
+
+# Doctrine Configuration
+doctrine:
+    dbal:
+        driver:   "%database_driver%"
+        host:     "%database_host%"
+        port:     "%database_port%"
+        dbname:   "%database_name%"
+        user:     "%database_user%"
+        password: "%database_password%"
+        charset:  UTF8
+        # if using pdo_sqlite as your database driver:
+        #   1. add the path in parameters.yml
+        #     e.g. database_path: "%kernel.root_dir%/data/data.db3"
+        #   2. Uncomment database_path in parameters.yml.dist
+        #   3. Uncomment next line:
+        #     path:     "%database_path%"
+
+    orm:
+        auto_generate_proxy_classes: "%kernel.debug%"
+        auto_mapping: true
+
+# Swiftmailer Configuration
+swiftmailer:
+    transport: "%mailer_transport%"
+    host:      "%mailer_host%"
+    username:  "%mailer_user%"
+    password:  "%mailer_password%"
+    spool:     { type: memory }
+
+sonata_block:
+    default_contexts: [cms]
+    blocks:
+        # Enable the SonataAdminBundle block
+        sonata.admin.block.admin_list:
+            contexts:   [admin]
+        # Your other blocks
+
+sonata_admin:
+    title:                Veterinaria
+    title_logo:           bundles/sonataadmin/logo_title.png
+    options:
+        html5_validate:                         false      # use html5 validation
+        confirm_exit:                           true      # enabled confirmation when quitting with unsaved changes
+        use_select2:                            true      # enable select2
+        use_icheck:                             true      # enable iCheck
+        #pager_links:                            ~         # pager max links to display
+        dropdown_number_groups_per_colums:      2         # max items per column in dropdown menu (add button in top nav)
+        title_mode:           'single_text'                      # 'both', 'single_text' or 'single_image'
+        
+    templates:
+        layout:               JloVetBundle::standard_layout.html.twig
+        
+        
+        
+#services:
+#   tutorial.blog.admin.post:
+#      class: Acme\DemoBundle\Admin\PostAdmin
+#      tags:
+#        - { name: sonata.admin, manager_type: orm, group: tutorial_blog, label: post }
+#      arguments: [null, Acme\DemoBundle\Entity\Post, AcmeDemoBundle:PostAdmin]
+
+
+
+services:
+   jlo.vet.admin.owner:
+      class: Jlo\VetBundle\Admin\OwnerAdmin
+      tags:
+        - { name: sonata.admin, manager_type: orm, group: Inicio, label: Owner List}
+      arguments: [null, Jlo\VetBundle\Entity\Owner, JloVetBundle:OwnerAdmin]
+
+   jlo.vet.admin.pet:
+      class: Jlo\VetBundle\Admin\PetAdmin
+      tags:
+        - { name: sonata.admin, manager_type: orm, group: Inicio, label: Pet List}
+      arguments: [null, Jlo\VetBundle\Entity\Pet, JloVetBundle:PetAdmin]
+
+   jlo.vet.admin.consult:
+      class: Jlo\VetBundle\Admin\ConsultAdmin
+      tags:
+        - { name: sonata.admin, manager_type: orm, group: Inicio, label: Consult List}
+      arguments: [null, Jlo\VetBundle\Entity\Consult, JloVetBundle:ConsultAdmin]
+
+   jlo.vet.admin.breed:
+      class: Jlo\VetBundle\Admin\BreedAdmin
+      tags:
+        - { name: sonata.admin, manager_type: orm, group: Otros, label: Breed List}
+      arguments: [null, Jlo\VetBundle\Entity\Breed, JloVetBundle:BreedAdmin]
+
+   jlo.vet.admin.specie:
+      class: Jlo\VetBundle\Admin\SpecieAdmin
+      tags:
+        - { name: sonata.admin, manager_type: orm, group: Otros, label: Specie List}
+      arguments: [null, Jlo\VetBundle\Entity\Specie, JloVetBundle:SpecieAdmin]
+
+simple_things_entity_audit:
+   audited_entities:
+      - VetBundle\Entity\Consult

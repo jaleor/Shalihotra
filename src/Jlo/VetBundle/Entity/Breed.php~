@@ -1,0 +1,39 @@
+<?php
+
+namespace Jlo\VetBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+
+/**
+ * @ORM\Entity
+ */
+class Breed
+{
+    /**
+     * @ORM\Id
+     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    protected $id;
+
+    /**
+     * @ORM\Column(type="string")
+     *
+     * @Assert\NotBlank()
+     */
+    protected $name;
+
+    /**
+     * @ORM\Column(type="string")
+     *
+     */
+    protected $name_origin;
+    
+    /**
+     * @ORM\ManyToOne(targetEntity="Specie")
+     */
+    protected $specie;
+
+
+}

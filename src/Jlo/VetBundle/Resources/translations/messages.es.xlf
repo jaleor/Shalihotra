@@ -1,0 +1,87 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" datatype="plaintext" original="file.ext">
+        <body>
+            <trans-unit id="1">
+                <source>Symfony2 is great</source>
+                <target>J'aime Symfony2</target>
+            </trans-unit>
+            <trans-unit id="2">
+                <source>owner</source>
+                <target>dueño</target>
+            </trans-unit>            
+            <trans-unit id="3">
+                <source>Name</source>
+                <target>Nombre</target>
+            </trans-unit>   
+            <trans-unit id="4">
+                <source>Lastname</source>
+                <target>Apellido</target>
+            </trans-unit>   
+            <trans-unit id="5">
+                <source>Address</source>
+                <target>Dirección</target>
+            </trans-unit>
+            <trans-unit id="6">
+                <source>Phone</source>
+                <target>Teléfono</target>
+            </trans-unit>
+            <trans-unit id="7">
+                <source>Cellphone</source>
+                <target>Celular</target>
+            </trans-unit>       
+            <trans-unit id="8">
+                <source>Dashboard</source>
+                <target>Inicio</target>
+            </trans-unit>                                         
+            <trans-unit id="9">
+                <source>Specie</source>
+                <target>Especie</target>
+            </trans-unit>       
+            <trans-unit id="10">
+                <source>Breed</source>
+                <target>Raza</target>
+            </trans-unit>       
+            <trans-unit id="11">
+                <source>Owner</source>
+                <target>Dueño</target>
+            </trans-unit>       
+            <trans-unit id="12">
+                <source>consult</source>
+                <target>consulta</target>
+            </trans-unit>       
+            <trans-unit id="13">
+                <source>Date</source>
+                <target>Fecha</target>
+            </trans-unit>     
+            <trans-unit id="14">
+                <source>Description</source>
+                <target>Descripción</target>
+            </trans-unit>                                                                                 
+            <trans-unit id="15">
+                <source>pet</source>
+                <target>paciente</target>
+            </trans-unit>                      
+            <trans-unit id="16">
+                <source>Pet List</source>
+                <target>Pacientes</target>
+            </trans-unit>             
+            <trans-unit id="17">
+                <source>Owner List</source>
+                <target>Dueños</target>
+            </trans-unit>                    
+            <trans-unit id="18">
+                <source>Consult List</source>
+                <target>Consultas</target>
+            </trans-unit>                 
+            <trans-unit id="19">
+                <source>Action</source>
+                <target>Acción</target>
+            </trans-unit> 
+            <trans-unit id="20">
+                <source>Pet</source>
+                <target>Paciente</target>
+            </trans-unit>             
+        </body>
+    </file>
+</xliff>

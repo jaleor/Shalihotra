@@ -1,0 +1,37 @@
+<!-- Acme/DemoBundle/Resources/config/admin.xml -->
+<container xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services/services-1.0.xsd">
+    <services>
+       <service id="sonata.admin.post" class="Acme\DemoBundle\Admin\PostAdmin">
+          <tag name="sonata.admin" manager_type="orm" group="Vet" label="Post"/>
+          <argument />
+          <argument>Acme\DemoBundle\Entity\Post</argument>
+          <argument />
+          <call method="setTranslationDomain">
+              <argument>AcmeDemoBundle</argument>
+          </call>
+      </service>
+      
+      <service id="sonata.admin.tag" class="Acme\DemoBundle\Admin\TagAdmin">
+          <tag name="sonata.admin" manager_type="orm" group="Vet" label="Tag"/>
+          <argument />
+          <argument>Acme\DemoBundle\Entity\Tag</argument>
+          <argument />
+          <call method="setTranslationDomain">
+              <argument>AcmeDemoBundle</argument>
+          </call>
+      </service>
+      
+      <service id="sonata.admin.comment" class="Acme\DemoBundle\Admin\CommentAdmin">
+          <tag name="sonata.admin" manager_type="orm" group="Vet" label="Comment"/>
+          <argument />
+          <argument>Acme\DemoBundle\Entity\Comment</argument>
+          <argument />
+          <call method="setTranslationDomain">
+              <argument>AcmeDemoBundle</argument>
+          </call>
+      </service>
+
+   </services>
+</container>

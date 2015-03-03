@@ -1,0 +1,3 @@
+jlo_vet_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: JloVetBundle:Default:index }
