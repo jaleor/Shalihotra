@@ -22,7 +22,14 @@ class Specie
      *
      * @Assert\NotBlank()
      */
-    protected $name;
+    protected $scientific_name;
+
+    /**
+     * @ORM\Column(type="string")
+     *
+     * @Assert\NotBlank()
+     */
+    protected $common_name;
 
 
     /**
@@ -36,29 +43,52 @@ class Specie
     }
 
     /**
-     * Set name
+     * Set scientific_name
      *
-     * @param string $name
+     * @param string $scientificName
      * @return Specie
      */
-    public function setName($name)
+    public function setScientificName($scientificName)
     {
-        $this->name = $name;
+        $this->scientific_name = $scientificName;
 
         return $this;
     }
 
     /**
-     * Get name
+     * Get scientific_name
      *
      * @return string 
      */
-    public function getName()
+    public function getScientificName()
     {
-        return $this->name;
+        return $this->scientific_name;
+    }
+
+    /**
+     * Set common_name
+     *
+     * @param string $commonName
+     * @return Specie
+     */
+    public function setCommonName($commonName)
+    {
+        $this->common_name = $commonName;
+
+        return $this;
+    }
+
+    /**
+     * Get common_name
+     *
+     * @return string 
+     */
+    public function getCommonName()
+    {
+        return $this->common_name;
     }
     
     public function __toString() {
-        return $this->getName();
+        return $this->getCommonName() . ' (' . $this->getScientificName() . ')';
     }
 }

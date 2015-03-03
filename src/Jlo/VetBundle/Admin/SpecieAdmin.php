@@ -23,7 +23,8 @@ class SpecieAdmin extends Admin
     protected function configureShowFields(ShowMapper $showMapper)
     {
         $showMapper
-            ->add('name')
+                ->add('common_name')
+                ->add('scientific_name')
         ;
     }
 
@@ -36,17 +37,9 @@ class SpecieAdmin extends Admin
     {
         $formMapper
             ->with('General')
-                ->add('name')
+                ->add('common_name')
+                ->add('scientific_name')
             ->end()
-            /*->with('Tags')
-                ->add('tags', 'sonata_type_model', array('expanded' => true, 'multiple' => true))
-            ->end()
-            ->with('Comments')
-                ->add('comments', 'sonata_type_model', array('multiple' => true))
-            ->end()
-            ->with('System Information', array('collapsed' => true))
-                ->add('created_at')
-            ->end()*/
         ;
     }
 
@@ -58,7 +51,8 @@ class SpecieAdmin extends Admin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->addIdentifier('name')
+            ->addIdentifier('common_name')
+            ->add('scientific_name')
             
             ->add('_action', 'actions', array(
                 'actions' => array(
@@ -78,7 +72,7 @@ class SpecieAdmin extends Admin
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
-            ->add('name')
+            ->add('common_name')
             /*->add('tags', null, array('field_options' => array('expanded' => true, 'multiple' => true)))*/
         ;
     }

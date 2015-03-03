@@ -25,16 +25,12 @@ class Pet
     protected $name;
 
     /**
-     * @ORM\Column(type="string")
-     *
-     * @Assert\NotBlank()
+     * @ORM\ManyToOne(targetEntity="Specie")
      */
     protected $specie;
 
     /**
-     * @ORM\Column(type="string")
-     *
-     * @Assert\NotBlank()
+     * @ORM\ManyToOne(targetEntity="Breed")
      */
     protected $breed;
     
