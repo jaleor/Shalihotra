@@ -144,6 +144,6 @@ class Pet
     }
     
     public function __toString() {
-        return $this->getName() . ' - ' . $this->getSpecie() . ' (' . $this->getBreed() . ')';
+        return $this->getName() . ' - ' . $this->getSpecie()->getCommonName() . ' (' . $this->getBreed() . ')';
     }
 }
