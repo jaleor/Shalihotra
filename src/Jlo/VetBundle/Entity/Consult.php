@@ -100,9 +100,12 @@ class Consult
         return $this->pet;
     }
     
-    /*public function __toString() {
-        return $this->getDate();
-    }*/
+    public function __toString() {        
+        if ($this->getId())
+            return $this->getDate()->format('d/m/Y H:i');
+        else
+            return 'Nueva';
+    }
 
     /**
      * Set cause

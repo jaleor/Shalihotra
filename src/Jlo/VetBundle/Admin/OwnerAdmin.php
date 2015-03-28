@@ -51,18 +51,33 @@ class OwnerAdmin extends Admin
                 ->add('city')
             ->end()
             ->with('Contacto', array('class'=>'col-md-4'))    
-                ->add('phone')
-                ->add('cellphone')
+                ->add('phone_primary')
+                ->add('phone_secondary')
+                ->add('phone_other')
             ->end()
-            /*->with('Tags')
-                ->add('tags', 'sonata_type_model', array('expanded' => true, 'multiple' => true))
-            ->end()
-            ->with('Comments')
-                ->add('comments', 'sonata_type_model', array('multiple' => true))
-            ->end()
-            ->with('System Information', array('collapsed' => true))
-                ->add('created_at')
-            ->end()*/
+             
+            /*->with('Mascotas', array('class'=>'col-md-12'))
+                ->add('pets', 'sonata_type_collection', array(
+                'type_options' => array(
+                    // Prevents the "Delete" option from being displayed
+                    'delete' => false,
+                    'read_only' => true,
+                    'label' => 'xxx',
+                    'delete_options' => array(
+                        // You may otherwise choose to put the field but hide it
+                        'type'         => 'hidden',
+                        // In that case, you need to fill in the options as well
+                        'type_options' => array(
+                            'mapped'   => false,
+                            'required' => false,
+                        )
+                    )
+                )
+            ), array(
+                'edit' => 'inline',
+                'inline' => 'table',
+                'sortable' => 'position',
+            ))*/
         ;
     }
 
@@ -74,9 +89,10 @@ class OwnerAdmin extends Admin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->addIdentifier('name')
-            ->add('lastname')
-            ->add('phone')
+            ->addIdentifier('lastname')
+            ->add('name')
+            ->add('address')
+            ->add('phone_primary')
             
             ->add('_action', 'actions', array(
                 'actions' => array(
@@ -96,9 +112,10 @@ class OwnerAdmin extends Admin
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
-            ->add('id')
-            ->add('phone')
+            ->add('lastname')
             ->add('name')
+            ->add('phone_primary')
+            ->add('address')
             /*->add('tags', null, array('field_options' => array('expanded' => true, 'multiple' => true)))*/
         ;
     }

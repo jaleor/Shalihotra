@@ -45,32 +45,56 @@ class PetAdmin extends Admin
                                                                         'placeholder' => 'Ingrese una raza',
                                                                         'attr' => array('class' => 'form-control')
                                                                         ))
-                ->add('owner', 'sonata_type_model_autocomplete', array( 'property'=>'name',
+                /*->add('owner', 'sonata_type_model_autocomplete', array( 'property'=>'name',
                                                                         'placeholder' => 'Ingrese un dueño',
                                                                         'attr' => array('class' => 'form-control'),
-                                                                        
-                                                                        ))
+                                                                        ))*/
+                /*->add('owner', 'sonata_type_admin', array('delete' => false))*/
+                ->add('owner', 'sonata_type_model_list',    array(),
+                                                            array('placeholder' => 'Seleccione el dueño'))
                 ->add('notes')
             ->end()
                 
-            ->with('Características', array('class'=>'col-md-6'))
-                ->add('birthdate', 'sonata_type_date_picker')
+            ->with('Características', array(    'class'=>'col-md-6',
+                                                'box_class'   => 'box box-solid box-danger'))
+                ->add('birthdate', 'sonata_type_date_picker', array(
+                                                                    'dp_language' => 'es',
+                                                                    'dp_use_current' => false,
+                                                                    'format' => 'dd/MM/yyyy',
+                                                                    'attr' => array(
+                                                                    'data-date-format' => 'dd/MM/yyyy',
+                                                                    )))
                 ->add('gender', 'choice', array('choices' => array( 'Unknown' => 'Desconocido',
                                                                      'Male' => 'Male',
-                                                                     'Female' => 'Female')))
+                                                                     'Female' => 'Female'),
+                                                'expanded' => true))
                 ->add('castrated')
                 ->add('dead')
                 ->add('color')
             ->end()
-            /*->with('Tags')
-                ->add('tags', 'sonata_type_model', array('expanded' => true, 'multiple' => true))
-            ->end()
-            ->with('Comments')
-                ->add('comments', 'sonata_type_model', array('multiple' => true))
-            ->end()
-            ->with('System Information', array('collapsed' => true))
-                ->add('created_at')
-            ->end()*/
+                
+            ->with('Historia Clínica', array('class'=>'col-md-12'))
+                ->add('consults', 'sonata_type_collection', array(
+                'type_options' => array(
+                    // Prevents the "Delete" option from being displayed
+                    'delete' => false,
+                    'read_only' => true,
+                    
+                    'delete_options' => array(
+                        // You may otherwise choose to put the field but hide it
+                        'type'         => 'hidden',
+                        // In that case, you need to fill in the options as well
+                        'type_options' => array(
+                            'mapped'   => false,
+                            'required' => false,
+                        )
+                    )
+                )
+            ), array(
+                'edit' => 'standard',
+                'inline' => 'table',
+                'sortable' => 'position',
+            ))
         ;
     }
 
@@ -83,6 +107,7 @@ class PetAdmin extends Admin
     {
         $listMapper
             ->addIdentifier('name')
+            ->add('specie')
             ->add('breed')
             ->add('owner')
             
@@ -108,4 +133,20 @@ class PetAdmin extends Admin
             /*->add('tags', null, array('field_options' => array('expanded' => true, 'multiple' => true)))*/
         ;
     }
+    
+    
+    
+    /*public function prePersist($pet) {
+        foreach ($pet->getConsults() as $consult) {
+            $consult->setPet($pet);
+        }
+    }
+
+    public function preUpdate($pet) {
+        foreach ($pet->getConsults() as $consult) {
+            $consult->setPet($pet);
+        }
+        $pet->setConsults($pet->getConsults());
+    }*/
+
 }

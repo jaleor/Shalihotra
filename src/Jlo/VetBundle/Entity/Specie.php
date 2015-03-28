@@ -89,6 +89,6 @@ class Specie
     }
     
     public function __toString() {
-        return $this->getCommonName() . ' (' . $this->getScientificName() . ')';
+        return $this->getCommonName()/* . ' (' . $this->getScientificName() . ')'*/;
     }
 }

@@ -48,13 +48,19 @@ class Owner
      * @ORM\Column(type="string")
      *
      */
-    protected $phone;
+    protected $phone_primary;
 
     /**
      * @ORM\Column(type="string")
      *
      */
-    protected $cellphone;
+    protected $phone_secondary;
+
+    /**
+     * @ORM\Column(type="string")
+     *
+     */
+    protected $phone_other;
 
     /**
      * @ORM\OneToMany(targetEntity="Pet", mappedBy="owner")
@@ -257,7 +263,10 @@ class Owner
     }
     
     public function __toString() {
-        return $this->getName();
+        if ($this->getId())
+            return $this->getName() . ' ' . $this->getLastname();
+        else
+            return 'Nuevo';
     }
 
     /**
@@ -281,5 +290,74 @@ class Owner
     public function getCity()
     {
         return $this->city;
+    }
+
+    /**
+     * Set phone_primary
+     *
+     * @param string $phonePrimary
+     * @return Owner
+     */
+    public function setPhonePrimary($phonePrimary)
+    {
+        $this->phone_primary = $phonePrimary;
+
+        return $this;
+    }
+
+    /**
+     * Get phone_primary
+     *
+     * @return string 
+     */
+    public function getPhonePrimary()
+    {
+        return $this->phone_primary;
+    }
+
+    /**
+     * Set phone_secondary
+     *
+     * @param string $phoneSecondary
+     * @return Owner
+     */
+    public function setPhoneSecondary($phoneSecondary)
+    {
+        $this->phone_secondary = $phoneSecondary;
+
+        return $this;
+    }
+
+    /**
+     * Get phone_secondary
+     *
+     * @return string 
+     */
+    public function getPhoneSecondary()
+    {
+        return $this->phone_secondary;
+    }
+
+    /**
+     * Set phone_other
+     *
+     * @param string $phoneOther
+     * @return Owner
+     */
+    public function setPhoneOther($phoneOther)
+    {
+        $this->phone_other = $phoneOther;
+
+        return $this;
+    }
+
+    /**
+     * Get phone_other
+     *
+     * @return string 
+     */
+    public function getPhoneOther()
+    {
+        return $this->phone_other;
     }
 }

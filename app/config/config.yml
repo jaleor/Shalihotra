@@ -30,6 +30,8 @@ twig:
         resources:
             # ...
             - 'SonataCoreBundle:Form:datepicker.html.twig'
+            - 'JloVetBundle:Form:custom_fields.html.twig'
+            
             
 # Assetic Configuration
 assetic:
@@ -95,6 +97,7 @@ sonata_admin:
         
     templates:
         layout:               JloVetBundle::standard_layout.html.twig
+        edit:                 JloVetBundle::base_edit.html.twig
         
         
         

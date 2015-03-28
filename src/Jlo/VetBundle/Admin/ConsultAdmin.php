@@ -39,7 +39,13 @@ class ConsultAdmin extends Admin
     {
         $formMapper
             ->with(' ', array('class' => 'col-md-6'))
-                ->add('date', 'sonata_type_date_picker')
+                ->add('date', 'sonata_type_datetime_picker', array(
+                                                                    'dp_language' => 'es',
+                                                                    'dp_use_current' => false,
+                                                                    'format' => 'dd/MM/yyyy HH:mm',
+                                                                    'attr' => array(
+                                                                    'data-date-format' => 'dd/MM/yyyy HH:mm',
+                                                                    )))
                 ->add('pet', 'sonata_type_model_autocomplete', array(   'required' => true,
                                                                         'property'=>'name',
                                                                         'placeholder' => 'Ingrese un paciente',
@@ -63,9 +69,9 @@ class ConsultAdmin extends Admin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->add('date')
+            ->addIdentifier('date')
             ->add('pet')
-            
+            ->add('diagnosis')
             ->add('_action', 'actions', array(
                 'actions' => array(
                     //'show' => array(),

@@ -130,8 +130,22 @@
                 <source>Treatment</source>
                 <target>Tratamiento</target>
             </trans-unit>                                         
-                     
-                              
+            <trans-unit id="33">
+                <source>Phone Primary</source>
+                <target>Teléfono principal</target>
+            </trans-unit>  
+            <trans-unit id="34">
+                <source>Phone Secondary</source>
+                <target>Teléfono secundario</target>
+            </trans-unit>  
+            <trans-unit id="35">
+                <source>Phone Other</source>
+                <target>Otro teléfono</target>
+            </trans-unit>           
+            <trans-unit id="36">
+                <source>City</source>
+                <target>Ciudad</target>
+            </trans-unit>                                
         </body>
     </file>
 </xliff>

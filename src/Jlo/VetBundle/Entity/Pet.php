@@ -77,6 +77,11 @@ class Pet
     protected $notes;
     
     /**
+     * @ORM\OneToMany(targetEntity="Consult", mappedBy="pet")
+     */
+    protected $consults;
+    
+    /**
      * Get id
      *
      * @return integer 
@@ -179,7 +184,10 @@ class Pet
     }
     
     public function __toString() {
-        return $this->getName() . ' (' . $this->getBreed() . ')';
+        if ($this->getId())
+            return $this->getName() . ' (' . $this->getBreed() . ')';
+        else
+            return 'Nuevo';
     }
 
     /**
@@ -318,5 +326,45 @@ class Pet
     public function getNotes()
     {
         return $this->notes;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->consults = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add consults
+     *
+     * @param \Jlo\VetBundle\Entity\Consult $consults
+     * @return Pet
+     */
+    public function addConsult(\Jlo\VetBundle\Entity\Consult $consults)
+    {
+        $this->consults[] = $consults;
+
+        return $this;
+    }
+
+    /**
+     * Remove consults
+     *
+     * @param \Jlo\VetBundle\Entity\Consult $consults
+     */
+    public function removeConsult(\Jlo\VetBundle\Entity\Consult $consults)
+    {
+        $this->consults->removeElement($consults);
+    }
+
+    /**
+     * Get consults
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getConsults()
+    {
+        return $this->consults;
     }
 }
