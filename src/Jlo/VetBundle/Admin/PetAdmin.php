@@ -38,15 +38,29 @@ class PetAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->with('General')
+            ->with('General', array('class'=>'col-md-6'))
                 ->add('name')
                 ->add('specie')
-                ->add('breed')
+                ->add('breed', 'sonata_type_model_autocomplete', array('property' => 'name',
+                                                                        'placeholder' => 'Ingrese una raza',
+                                                                        'attr' => array('class' => 'form-control')
+                                                                        ))
                 ->add('owner', 'sonata_type_model_autocomplete', array( 'property'=>'name',
                                                                         'placeholder' => 'Ingrese un dueño',
                                                                         'attr' => array('class' => 'form-control'),
                                                                         
                                                                         ))
+                ->add('notes')
+            ->end()
+                
+            ->with('Características', array('class'=>'col-md-6'))
+                ->add('birthdate', 'sonata_type_date_picker')
+                ->add('gender', 'choice', array('choices' => array( 'Unknown' => 'Desconocido',
+                                                                     'Male' => 'Male',
+                                                                     'Female' => 'Female')))
+                ->add('castrated')
+                ->add('dead')
+                ->add('color')
             ->end()
             /*->with('Tags')
                 ->add('tags', 'sonata_type_model', array('expanded' => true, 'multiple' => true))

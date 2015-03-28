@@ -25,12 +25,20 @@ class Consult
     protected $date;
 
     /**
-     * @ORM\Column(type="text")
-     *
-     * @Assert\NotBlank()
+     * @ORM\Column(type="text", nullable=true)
      */
-    protected $description;
+    protected $cause;
 
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    protected $diagnosis;
+    
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    protected $treatment;
+    
     /**
      * @ORM\ManyToOne(targetEntity="Pet")
      */
@@ -70,29 +78,6 @@ class Consult
     }
 
     /**
-     * Set description
-     *
-     * @param string $description
-     * @return Consult
-     */
-    public function setDescription($description)
-    {
-        $this->description = $description;
-
-        return $this;
-    }
-
-    /**
-     * Get description
-     *
-     * @return string 
-     */
-    public function getDescription()
-    {
-        return $this->description;
-    }
-
-    /**
      * Set pet
      *
      * @param \Jlo\VetBundle\Entity\Pet $pet
@@ -115,7 +100,76 @@ class Consult
         return $this->pet;
     }
     
-    public function __toString() {
-        return $this->getDescription();
+    /*public function __toString() {
+        return $this->getDate();
+    }*/
+
+    /**
+     * Set cause
+     *
+     * @param string $cause
+     * @return Consult
+     */
+    public function setCause($cause)
+    {
+        $this->cause = $cause;
+
+        return $this;
+    }
+
+    /**
+     * Get cause
+     *
+     * @return string 
+     */
+    public function getCause()
+    {
+        return $this->cause;
+    }
+
+    /**
+     * Set diagnosis
+     *
+     * @param string $diagnosis
+     * @return Consult
+     */
+    public function setDiagnosis($diagnosis)
+    {
+        $this->diagnosis = $diagnosis;
+
+        return $this;
+    }
+
+    /**
+     * Get diagnosis
+     *
+     * @return string 
+     */
+    public function getDiagnosis()
+    {
+        return $this->diagnosis;
+    }
+
+    /**
+     * Set treatment
+     *
+     * @param string $treatment
+     * @return Consult
+     */
+    public function setTreatment($treatment)
+    {
+        $this->treatment = $treatment;
+
+        return $this;
+    }
+
+    /**
+     * Get treatment
+     *
+     * @return string 
+     */
+    public function getTreatment()
+    {
+        return $this->treatment;
     }
 }

@@ -37,7 +37,7 @@ class BreedAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->with('General')
+            ->with(' ', array('class'=>'col-md-6'))
                 ->add('name')
                 ->add('name_origin')
                 ->add('specie', 'sonata_type_model')                

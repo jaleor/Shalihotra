@@ -40,11 +40,17 @@ class OwnerAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->with('General')
+            ->with('Datos', array('class'=>'col-md-4'))
                 ->add('name')
                 ->add('lastname')
                 ->add('email', null, array('required' => false))                
+                
+            ->end()
+            ->with('Localización', array('class'=>'col-md-4'))
                 ->add('address')
+                ->add('city')
+            ->end()
+            ->with('Contacto', array('class'=>'col-md-4'))    
                 ->add('phone')
                 ->add('cellphone')
             ->end()

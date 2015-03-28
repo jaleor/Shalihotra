@@ -82,6 +82,56 @@
                 <source>Pet</source>
                 <target>Paciente</target>
             </trans-unit>             
+            <trans-unit id="21">
+                <source>Castrated</source>
+                <target>Esterilizado</target>
+            </trans-unit>             
+            <trans-unit id="22">
+                <source>Dead</source>
+                <target>Fallecido</target>
+            </trans-unit>             
+            <trans-unit id="23">
+                <source>Gender</source>
+                <target>Sexo</target>
+            </trans-unit>                    
+            <trans-unit id="24">
+                <source>Birthdate</source>
+                <target>Fecha de nacimiento</target>
+            </trans-unit>               
+            <trans-unit id="25">
+                <source>Notes</source>
+                <target>Notas</target>
+            </trans-unit>                           
+            <trans-unit id="26">
+                <source>Male</source>
+                <target>Masculino</target>
+            </trans-unit>                
+            <trans-unit id="27">
+                <source>Female</source>
+                <target>Femenino</target>
+            </trans-unit>                    
+            <trans-unit id="28">
+                <source>Breed List</source>
+                <target>Razas</target>
+            </trans-unit>            
+            <trans-unit id="29">
+                <source>Specie List</source>
+                <target>Especies</target>
+            </trans-unit>       
+            <trans-unit id="30">
+                <source>Cause</source>
+                <target>Causa de visita</target>
+            </trans-unit>     
+            <trans-unit id="31">
+                <source>Diagnosis</source>
+                <target>Diagnóstico</target>
+            </trans-unit>     
+            <trans-unit id="32">
+                <source>Treatment</source>
+                <target>Tratamiento</target>
+            </trans-unit>                                         
+                     
+                              
         </body>
     </file>
 </xliff>

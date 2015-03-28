@@ -39,8 +39,43 @@ class Pet
      */
     protected $owner;
 
-    
+    /**
+     * @ORM\Column(type="string")
+     *
+     * @Assert\NotBlank()
+     */
+    protected $gender;
 
+    /**
+     * @ORM\Column(type="boolean")
+     *
+     */
+    protected $castrated;    
+
+    /**
+     * @ORM\Column(type="boolean")
+     *
+     */
+    protected $dead;    
+    
+    /**
+     * @ORM\Column(type="string")
+     *
+     */
+    protected $color;
+
+    /**
+     * @ORM\Column(type="date")
+     *
+     */
+    protected $birthdate;
+
+    /**
+     * @ORM\Column(type="text")
+     *
+     */
+    protected $notes;
+    
     /**
      * Get id
      *
@@ -144,6 +179,144 @@ class Pet
     }
     
     public function __toString() {
-        return $this->getName() . ' - ' . $this->getSpecie() . ' (' . $this->getBreed() . ')';
+        return $this->getName() . ' (' . $this->getBreed() . ')';
+    }
+
+    /**
+     * Set gender
+     *
+     * @param string $gender
+     * @return Pet
+     */
+    public function setGender($gender)
+    {
+        $this->gender = $gender;
+
+        return $this;
+    }
+
+    /**
+     * Get gender
+     *
+     * @return string 
+     */
+    public function getGender()
+    {
+        return $this->gender;
+    }
+
+    /**
+     * Set castrated
+     *
+     * @param boolean $castrated
+     * @return Pet
+     */
+    public function setCastrated($castrated)
+    {
+        $this->castrated = $castrated;
+
+        return $this;
+    }
+
+    /**
+     * Get castrated
+     *
+     * @return boolean 
+     */
+    public function getCastrated()
+    {
+        return $this->castrated;
+    }
+
+    /**
+     * Set dead
+     *
+     * @param boolean $dead
+     * @return Pet
+     */
+    public function setDead($dead)
+    {
+        $this->dead = $dead;
+
+        return $this;
+    }
+
+    /**
+     * Get dead
+     *
+     * @return boolean 
+     */
+    public function getDead()
+    {
+        return $this->dead;
+    }
+
+    /**
+     * Set color
+     *
+     * @param string $color
+     * @return Pet
+     */
+    public function setColor($color)
+    {
+        $this->color = $color;
+
+        return $this;
+    }
+
+    /**
+     * Get color
+     *
+     * @return string 
+     */
+    public function getColor()
+    {
+        return $this->color;
+    }
+
+    /**
+     * Set birthdate
+     *
+     * @param \DateTime $birthdate
+     * @return Pet
+     */
+    public function setBirthdate($birthdate)
+    {
+        $this->birthdate = $birthdate;
+
+        return $this;
+    }
+
+    /**
+     * Get birthdate
+     *
+     * @return \DateTime 
+     */
+    public function getBirthdate()
+    {
+        return $this->birthdate;
+    }
+
+    /**
+     * Set notes
+     *
+     * @param string $notes
+     * @return Pet
+     */
+    public function setNotes($notes)
+    {
+        $this->notes = $notes;
+
+        return $this;
+    }
+
+    /**
+     * Get notes
+     *
+     * @return string 
+     */
+    public function getNotes()
+    {
+        return $this->notes;
     }
 }

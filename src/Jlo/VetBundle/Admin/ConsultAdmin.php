@@ -24,7 +24,9 @@ class ConsultAdmin extends Admin
     {
         $showMapper
             ->add('date')
-            ->add('description')
+            ->add('cause')
+            ->add('diagnosis')
+            ->add('treatment')
         ;
     }
 
@@ -36,13 +38,18 @@ class ConsultAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->with('General')
+            ->with(' ', array('class' => 'col-md-6'))
                 ->add('date', 'sonata_type_date_picker')
-                ->add('pet', 'sonata_type_model_autocomplete', array( 'property'=>'name',
+                ->add('pet', 'sonata_type_model_autocomplete', array(   'required' => true,
+                                                                        'property'=>'name',
                                                                         'placeholder' => 'Ingrese un paciente',
                                                                         'attr' => array('class' => 'form-control'),
                                                                         ))
-                ->add('description')
+            ->end()
+            ->with('  ', array('class' => 'col-md-6'))
+                ->add('cause', null, array('required' => false))
+                ->add('diagnosis', null, array('required' => false))
+                ->add('treatment', null, array('required' => false))
             ->end()
          
         ;
@@ -58,7 +65,6 @@ class ConsultAdmin extends Admin
         $listMapper
             ->add('date')
             ->add('pet')
-            ->add('description')
             
             ->add('_action', 'actions', array(
                 'actions' => array(
@@ -81,7 +87,6 @@ class ConsultAdmin extends Admin
         $datagridMapper
             ->add('date')
             ->add('pet')
-            ->add('description')
         ;
     }
 }

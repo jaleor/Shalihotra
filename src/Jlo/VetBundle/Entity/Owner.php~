@@ -34,7 +34,6 @@ class Owner
     /**
      * @ORM\Column(type="string")
      *
-     * @Assert\NotBlank()
      */
     protected $email;
 
@@ -48,14 +47,12 @@ class Owner
     /**
      * @ORM\Column(type="string")
      *
-     * @Assert\NotBlank()
      */
     protected $phone;
 
     /**
      * @ORM\Column(type="string")
      *
-     * @Assert\NotBlank()
      */
     protected $cellphone;
 
@@ -64,6 +61,11 @@ class Owner
      */
     protected $pets;
 
+    /**
+     * @ORM\Column(type="string")
+     *
+     */
+    protected $city;
     
     /**
      * Constructor
@@ -256,5 +258,28 @@ class Owner
     
     public function __toString() {
         return $this->getName();
+    }
+
+    /**
+     * Set city
+     *
+     * @param string $city
+     * @return Owner
+     */
+    public function setCity($city)
+    {
+        $this->city = $city;
+
+        return $this;
+    }
+
+    /**
+     * Get city
+     *
+     * @return string 
+     */
+    public function getCity()
+    {
+        return $this->city;
     }
 }

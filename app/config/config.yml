@@ -82,7 +82,7 @@ sonata_block:
         # Your other blocks
 
 sonata_admin:
-    title:                Veterinaria
+    title:                EasyVet
     title_logo:           bundles/sonataadmin/logo_title.png
     options:
         html5_validate:                         false      # use html5 validation
