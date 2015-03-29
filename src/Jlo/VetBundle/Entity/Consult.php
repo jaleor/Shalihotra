@@ -45,6 +45,11 @@ class Consult
     protected $pet;    
 
     /**
+     * @ORM\ManyToMany(targetEntity="Vaccine")
+     */
+    protected $vaccines;
+    
+    /**
      * Get id
      *
      * @return integer 
@@ -175,4 +180,48 @@ class Consult
     {
         return $this->treatment;
     }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->vaccines = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add vaccines
+     *
+     * @param \Jlo\VetBundle\Entity\Vaccine $vaccines
+     * @return Consult
+     */
+    public function addVaccine(\Jlo\VetBundle\Entity\Vaccine $vaccines)
+    {
+        $this->vaccines[] = $vaccines;
+
+        return $this;
+    }
+
+    /**
+     * Remove vaccines
+     *
+     * @param \Jlo\VetBundle\Entity\Vaccine $vaccines
+     */
+    public function removeVaccine(\Jlo\VetBundle\Entity\Vaccine $vaccines)
+    {
+        $this->vaccines->removeElement($vaccines);
+    }
+
+    /**
+     * Get vaccines
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getVaccines()
+    {
+        return $this->vaccines;
+    }
+    
+    
+    
+    
 }

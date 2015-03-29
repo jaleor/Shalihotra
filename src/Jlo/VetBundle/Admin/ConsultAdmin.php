@@ -39,20 +39,25 @@ class ConsultAdmin extends Admin
     {
         $formMapper
             ->with(' ', array('class' => 'col-md-6'))
-                ->add('date', 'sonata_type_datetime_picker', array(
+                ->add('date', 'sonata_type_datetime_picker', array( 'datepicker_use_button' => false,
                                                                     'dp_language' => 'es',
                                                                     'dp_use_current' => false,
                                                                     'format' => 'dd/MM/yyyy HH:mm',
                                                                     'attr' => array(
                                                                     'data-date-format' => 'dd/MM/yyyy HH:mm',
                                                                     )))
-                ->add('pet', 'sonata_type_model_autocomplete', array(   'required' => true,
+                /*->add('pet', 'sonata_type_model_autocomplete', array(   'required' => true,
                                                                         'property'=>'name',
                                                                         'placeholder' => 'Ingrese un paciente',
                                                                         'attr' => array('class' => 'form-control'),
-                                                                        ))
+                                                                        ))*/
             ->end()
-            ->with('  ', array('class' => 'col-md-6'))
+            ->with('Vacunas', array('class' => 'col-md-6'))
+                ->add('vaccines', 'sonata_type_model', array(   'expanded' => false, 
+                                                                'multiple' => true,
+                                                                'btn_add' => 'Nueva vacuna'))
+            ->end()    
+            ->with('  ', array('class' => 'col-md-12'))
                 ->add('cause', null, array('required' => false))
                 ->add('diagnosis', null, array('required' => false))
                 ->add('treatment', null, array('required' => false))
@@ -94,5 +99,19 @@ class ConsultAdmin extends Admin
             ->add('date')
             ->add('pet')
         ;
+    }
+    
+    protected $datagridValues = array(
+        '_page' => 1,            
+        '_sort_order' => 'DESC', 
+        '_sort_by' => 'date'  
+    );
+    
+    public function getNewInstance()
+    {
+        $instance = parent::getNewInstance();
+        $instance->setDate(new \DateTime());
+
+        return $instance;
     }
 }

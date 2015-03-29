@@ -3,26 +3,24 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/home/javier/Projects/vet/src/Jlo/VetBundle/Resources/views/base_edit.html.twig</file>
+            <file>file:/home/javier/Projects/vet/src/Jlo/VetBundle/Resources/views/standard_layout.html.twig</file>
             <file>file:/home/javier/Projects/vet/src/Jlo/VetBundle/Entity/Consult.php</file>
-            <file>file:/home/javier/Projects/vet/src/Acme/DemoBundle/Admin/PostAdmin.php</file>
             <file>file:/home/javier/Projects/vet/src/Jlo/VetBundle/Entity/Breed.php</file>
-            <file>file:/home/javier/Projects/vet/src/Jlo/VetBundle/Admin/BreedAdmin.php</file>
+            <file>file:/home/javier/Projects/vet/src/Jlo/VetBundle/Resources/views/Form/custom_fields.html.twig</file>
+            <file>file:/home/javier/Projects/vet/app/config/security.yml</file>
             <file>file:/home/javier/Projects/vet/src/Jlo/VetBundle/Admin/PetAdmin.php</file>
-            <file>file:/home/javier/Projects/vet/src/Acme/DemoBundle/Controller/PostAdminController.php</file>
-            <file>file:/home/javier/Projects/vet/src/Acme/DemoBundle/Entity/Comment.php</file>
-            <file>file:/home/javier/Projects/vet/app/Resources/views/base.html.twig</file>
+            <file>file:/home/javier/Projects/vet/src/Jlo/VetBundle/Entity/Vaccine.php</file>
+            <file>file:/home/javier/Projects/vet/src/Jlo/VetBundle/Entity/Specie.php</file>
             <file>file:/home/javier/Projects/vet/src/Jlo/VetBundle/Entity/Pet.php</file>
             <file>file:/home/javier/Projects/vet/src/Jlo/VetBundle/Admin/OwnerAdmin.php</file>
-            <file>file:/home/javier/Projects/vet/src/Acme/DemoBundle/Resources/config/admin.xml</file>
-            <file>file:/home/javier/Projects/vet/src/Jlo/VetBundle/Controller/OwnerAdminController.php</file>
-            <file>file:/home/javier/Projects/vet/src/Acme/DemoBundle/Resources/config/routing.yml</file>
-            <file>file:/home/javier/Projects/vet/src/Acme/DemoBundle/Entity/Post.php</file>
+            <file>file:/home/javier/Projects/vet/src/Jlo/VetBundle/Admin/VaccineAdmin.php</file>
             <file>file:/home/javier/Projects/vet/app/config/config.yml</file>
+            <file>file:/home/javier/Projects/vet/vendor/symfony/symfony/src/Symfony/Component/Form/FormView.php</file>
             <file>file:/home/javier/Projects/vet/src/Jlo/VetBundle/Admin/ConsultAdmin.php</file>
-            <file>file:/home/javier/Projects/vet/src/Jlo/VetBundle/Resources/config/services.yml</file>
             <file>file:/home/javier/Projects/vet/src/Jlo/VetBundle/Resources/translations/messages.es.xlf</file>
-            <file>file:/home/javier/Projects/vet/src/Acme/DemoBundle/Resources/config/services.xml</file>
             <file>file:/home/javier/Projects/vet/src/Jlo/VetBundle/Entity/Owner.php</file>
+            <file>file:/home/javier/Projects/vet/src/Jlo/VetBundle/Controller/VaccineAdminController.php</file>
         </group>
     </open-files>
 </project-private>

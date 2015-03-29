@@ -4,6 +4,7 @@ namespace Jlo\VetBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use \Doctrine\Common\Util\Debug;
 
 /**
  * @ORM\Entity
@@ -26,16 +27,21 @@ class Pet
 
     /**
      * @ORM\ManyToOne(targetEntity="Specie")
+     * 
+     * @Assert\NotBlank()
      */
     protected $specie;
 
     /**
      * @ORM\ManyToOne(targetEntity="Breed")
+     * 
      */
     protected $breed;
     
     /**
      * @ORM\ManyToOne(targetEntity="Owner")
+     * 
+     * @Assert\NotBlank()
      */
     protected $owner;
 
@@ -59,25 +65,25 @@ class Pet
     protected $dead;    
     
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string", nullable=true)
      *
      */
     protected $color;
 
     /**
-     * @ORM\Column(type="date")
+     * @ORM\Column(type="date", nullable=true)
      *
      */
     protected $birthdate;
 
     /**
-     * @ORM\Column(type="text")
+     * @ORM\Column(type="text", nullable=true)
      *
      */
     protected $notes;
     
     /**
-     * @ORM\OneToMany(targetEntity="Consult", mappedBy="pet")
+     * @ORM\OneToMany(targetEntity="Consult", mappedBy="pet", cascade={"persist", "remove"})
      */
     protected $consults;
     
@@ -184,7 +190,10 @@ class Pet
     }
     
     public function __toString() {
-        return $this->getName() . ' (' . $this->getBreed() . ')';
+        if ($this->getId())
+            return $this->getName() . ' (' . $this->getBreed() . ')';
+        else
+            return 'Nuevo';
     }
 
     /**
@@ -364,4 +373,23 @@ class Pet
     {
         return $this->consults;
     }
+    
+    public function getVaccines()
+    {
+        $vaccines = [];
+        foreach ($this->getConsults() as $consult) {
+            $vaccines = array_merge($vaccines, $consult->getVaccines()->toArray());
+        }
+        //Debug::dump($vaccines);
+        //die;
+        //return new ArrayCollection($vaccines);
+        return implode(' ', $vaccines);
+    }        
+    
+    public function setVaccines($array)
+    {
+        
+    }
+    
+
 }

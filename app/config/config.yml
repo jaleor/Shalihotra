@@ -111,22 +111,23 @@ sonata_admin:
 
 
 services:
+    
+   jlo.vet.admin.pet:
+      class: Jlo\VetBundle\Admin\PetAdmin
+      tags:
+        - { name: sonata.admin, manager_type: orm, group: Inicio, label: Pet List}
+      arguments: [null, Jlo\VetBundle\Entity\Pet, JloVetBundle:PetAdmin]
+      
    jlo.vet.admin.owner:
       class: Jlo\VetBundle\Admin\OwnerAdmin
       tags:
         - { name: sonata.admin, manager_type: orm, group: Inicio, label: Owner List}
       arguments: [null, Jlo\VetBundle\Entity\Owner, JloVetBundle:OwnerAdmin]
 
-   jlo.vet.admin.pet:
-      class: Jlo\VetBundle\Admin\PetAdmin
-      tags:
-        - { name: sonata.admin, manager_type: orm, group: Inicio, label: Pet List}
-      arguments: [null, Jlo\VetBundle\Entity\Pet, JloVetBundle:PetAdmin]
-
    jlo.vet.admin.consult:
       class: Jlo\VetBundle\Admin\ConsultAdmin
       tags:
-        - { name: sonata.admin, manager_type: orm, group: Inicio, label: Consult List}
+        - { name: sonata.admin, manager_type: orm, group: Inicio, label: Consult List, show_in_dashboard: false}
       arguments: [null, Jlo\VetBundle\Entity\Consult, JloVetBundle:ConsultAdmin]
 
    jlo.vet.admin.breed:
@@ -140,6 +141,12 @@ services:
       tags:
         - { name: sonata.admin, manager_type: orm, group: Otros, label: Specie List}
       arguments: [null, Jlo\VetBundle\Entity\Specie, JloVetBundle:SpecieAdmin]
+      
+   jlo.vet.admin.vaccine:
+      class: Jlo\VetBundle\Admin\VaccineAdmin
+      tags:
+        - { name: sonata.admin, manager_type: orm, group: Otros, label: Vaccine List}
+      arguments: [null, Jlo\VetBundle\Entity\Vaccine, JloVetBundle:VaccineAdmin]
 
 simple_things_entity_audit:
    audited_entities:

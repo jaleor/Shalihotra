@@ -42,8 +42,9 @@ class PetAdmin extends Admin
                 ->add('name')
                 ->add('specie')
                 ->add('breed', 'sonata_type_model_autocomplete', array('property' => 'name',
-                                                                        'placeholder' => 'Ingrese una raza',
-                                                                        'attr' => array('class' => 'form-control')
+                                                                        'placeholder' => 'Raza sin especificar',
+                                                                        
+                                                                        'attr' => array('class' => 'form-control', 'allowClear' => true)
                                                                         ))
                 /*->add('owner', 'sonata_type_model_autocomplete', array( 'property'=>'name',
                                                                         'placeholder' => 'Ingrese un dueño',
@@ -57,29 +58,47 @@ class PetAdmin extends Admin
                 
             ->with('Características', array(    'class'=>'col-md-6',
                                                 'box_class'   => 'box box-solid box-danger'))
-                ->add('birthdate', 'sonata_type_date_picker', array(
+                ->add('birthdate', 'sonata_type_date_picker', array('required' => false,
                                                                     'dp_language' => 'es',
                                                                     'dp_use_current' => false,
                                                                     'format' => 'dd/MM/yyyy',
+                                                                    //'read_only' => true,
+                                                                    'widget' => 'single_text',
+                                                                    'datepicker_use_button' => false,
                                                                     'attr' => array(
+                                                                    'placeholder' => 'Desconocida',
                                                                     'data-date-format' => 'dd/MM/yyyy',
                                                                     )))
                 ->add('gender', 'choice', array('choices' => array( 'Unknown' => 'Desconocido',
                                                                      'Male' => 'Male',
                                                                      'Female' => 'Female'),
                                                 'expanded' => true))
-                ->add('castrated')
-                ->add('dead')
-                ->add('color')
+                ->add('castrated', null, array('required' => false))
+                ->add('dead', null, array('required' => false))
+                ->add('color', null, array('required' => false))
             ->end()
+        ;
+        
+        $subject = $this->getSubject();
+
+        if ($subject->getId()) {
+            $formMapper
+                    
+            /*->with('Vacunas Aplicadas', array('class' => 'col-md-12'))    
+                ->add('vaccines', 'text', array('read_only' => true, 'label' => false))
+            ->end()*/
                 
             ->with('Historia Clínica', array('class'=>'col-md-12'))
                 ->add('consults', 'sonata_type_collection', array(
+                'required' => false,
+                'by_reference' => false,
+                'label' => false,
                 'type_options' => array(
                     // Prevents the "Delete" option from being displayed
                     'delete' => false,
-                    'read_only' => true,
-                    
+                    //'read_only' => true,
+                    'btn_add' => 'Nueva consulta',
+                    'label' => false,
                     'delete_options' => array(
                         // You may otherwise choose to put the field but hide it
                         'type'         => 'hidden',
@@ -91,11 +110,13 @@ class PetAdmin extends Admin
                     )
                 )
             ), array(
-                'edit' => 'standard',
+                'edit' => 'inline',
                 'inline' => 'table',
                 'sortable' => 'position',
             ))
         ;
+        }
+        
     }
 
     /**
@@ -130,13 +151,16 @@ class PetAdmin extends Admin
     {
         $datagridMapper
             ->add('name')
+            ->add('specie')
+            ->add('owner.name')
+            ->add('owner.lastname')
+            ->add('owner.address')
+            ->add('owner.phone_1')
             /*->add('tags', null, array('field_options' => array('expanded' => true, 'multiple' => true)))*/
         ;
     }
     
-    
-    
-    /*public function prePersist($pet) {
+    public function prePersist($pet) {
         foreach ($pet->getConsults() as $consult) {
             $consult->setPet($pet);
         }
@@ -146,7 +170,7 @@ class PetAdmin extends Admin
         foreach ($pet->getConsults() as $consult) {
             $consult->setPet($pet);
         }
-        $pet->setConsults($pet->getConsults());
-    }*/
+        //$pet->setConsults($pet->getConsults());
+    }
 
 }

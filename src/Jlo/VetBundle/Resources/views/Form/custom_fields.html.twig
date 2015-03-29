@@ -1,6 +1,11 @@
 {% extends 'SonataAdminBundle:Form:form_admin_fields.html.twig' %}
 
-{% block jlo_vet_admin_owner_pets_sonata_type_collection_widgetx %}
+{% block my_block %}
+
+{% endblock %}
+
+
+{% block jlo_vet_admin_owner_pets_sonata_type_collection_widget_____ %}
  
     {% for field_name, nested_field in form.children|first.children %}
         
@@ -15,7 +20,7 @@
 
 
 
-{% block jlo_vet_admin_pet_consults_sonata_type_collection_widget %}
+{% block jlo_vet_admin_pet_consults_sonata_type_collection_widget_____ %}
  
   
 {# Sonata/DoctrineORMAdminBundle/Resources/views/CRUD/edit_orm_one_to_many.html.twig     #}
@@ -40,7 +45,7 @@
                                             <th>{{ 'action_delete'|trans({}, 'SonataAdminBundle') }}</th>
                                         {% else %}
                                         
-                                        {% if (field_name != 'pet') %}
+                                        {% if ((field_name != 'pet') and (field_name != 'vaccines')) %}
                                             
                                             <th {{ nested_field.vars['required']  ? 'class="required"' : '' }}{% if (nested_field.vars['attr']['hidden'] is defined) and (nested_field.vars['attr']['hidden']) %} style="display:none;"{% endif %}>
                                                 {{ nested_field.vars['sonata_admin'].admin.trans(nested_field.vars.label) }}
@@ -58,7 +63,7 @@
                                     <tr>
                                         {% for field_name, nested_field in nested_group_field.children %}
                                             
-                                            {% if (field_name != 'pet') %}
+                                            {% if ((field_name != 'pet') and (field_name != 'vaccines')) %}
                                                 
                                             <td class="sonata-ba-td-{{ id }}-{{ field_name  }} control-group{% if nested_field.vars.errors|length > 0 %} error{% endif %}"{% if (nested_field.vars['attr']['hidden'] is defined) and (nested_field.vars['attr']['hidden']) %} style="display:none;"{% endif %}>
                                                 {% if sonata_admin.field_description.associationadmin.formfielddescriptions[field_name] is defined %}

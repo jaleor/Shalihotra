@@ -146,6 +146,30 @@
                 <source>City</source>
                 <target>Ciudad</target>
             </trans-unit>                                
+            <trans-unit id="37">
+                <source>Vaccines</source>
+                <target>Vacunas</target>
+            </trans-unit>                                            
+            <trans-unit id="38">
+                <source>Vaccine List</source>
+                <target>Vacunas</target>
+            </trans-unit>                 
+            <trans-unit id="39">
+                <source>Owner Name</source>
+                <target>Nombre Dueño</target>
+            </trans-unit>      
+            <trans-unit id="40">
+                <source>Owner Lastname</source>
+                <target>Apellido Dueño</target>
+            </trans-unit>      
+            <trans-unit id="41">
+                <source>Owner Phone 1</source>
+                <target>Teléfono</target>
+            </trans-unit>                                          
+            <trans-unit id="42">
+                <source>Owner Address</source>
+                <target>Dirección</target>
+            </trans-unit>                       
         </body>
     </file>
 </xliff>

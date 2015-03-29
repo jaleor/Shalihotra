@@ -32,35 +32,34 @@ class Owner
     protected $lastname;
 
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string", nullable=true)
      *
      */
     protected $email;
 
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string", nullable=true)
      *
-     * @Assert\NotBlank()
      */
     protected $address;
 
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string", nullable=true)
      *
      */
-    protected $phone_primary;
+    protected $phone_1;
 
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string", nullable=true)
      *
      */
-    protected $phone_secondary;
+    protected $phone_2;
 
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string", nullable=true)
      *
      */
-    protected $phone_other;
+    protected $phone_3;
 
     /**
      * @ORM\OneToMany(targetEntity="Pet", mappedBy="owner")
@@ -68,7 +67,7 @@ class Owner
     protected $pets;
 
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string", nullable=true)
      *
      */
     protected $city;
@@ -263,7 +262,10 @@ class Owner
     }
     
     public function __toString() {
-        return $this->getName() . ' ' . $this->getLastname();
+        if ($this->getId())
+            return $this->getName() . ' ' . $this->getLastname();
+        else
+            return 'Nuevo';
     }
 
     /**
@@ -356,5 +358,74 @@ class Owner
     public function getPhoneOther()
     {
         return $this->phone_other;
+    }
+
+    /**
+     * Set phone_1
+     *
+     * @param string $phone1
+     * @return Owner
+     */
+    public function setPhone1($phone1)
+    {
+        $this->phone_1 = $phone1;
+
+        return $this;
+    }
+
+    /**
+     * Get phone_1
+     *
+     * @return string 
+     */
+    public function getPhone1()
+    {
+        return $this->phone_1;
+    }
+
+    /**
+     * Set phone_2
+     *
+     * @param string $phone2
+     * @return Owner
+     */
+    public function setPhone2($phone2)
+    {
+        $this->phone_2 = $phone2;
+
+        return $this;
+    }
+
+    /**
+     * Get phone_2
+     *
+     * @return string 
+     */
+    public function getPhone2()
+    {
+        return $this->phone_2;
+    }
+
+    /**
+     * Set phone_3
+     *
+     * @param string $phone3
+     * @return Owner
+     */
+    public function setPhone3($phone3)
+    {
+        $this->phone_3 = $phone3;
+
+        return $this;
+    }
+
+    /**
+     * Get phone_3
+     *
+     * @return string 
+     */
+    public function getPhone3()
+    {
+        return $this->phone_3;
     }
 }

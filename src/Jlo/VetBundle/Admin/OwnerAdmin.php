@@ -51,11 +51,12 @@ class OwnerAdmin extends Admin
                 ->add('city')
             ->end()
             ->with('Contacto', array('class'=>'col-md-4'))    
-                ->add('phone_primary')
-                ->add('phone_secondary')
-                ->add('phone_other')
+                ->add('phone_1')
+                ->add('phone_2')
+                ->add('phone_3')
             ->end()
-             
+            
+            
             /*->with('Mascotas', array('class'=>'col-md-12'))
                 ->add('pets', 'sonata_type_collection', array(
                 'type_options' => array(
@@ -92,7 +93,7 @@ class OwnerAdmin extends Admin
             ->addIdentifier('lastname')
             ->add('name')
             ->add('address')
-            ->add('phone_primary')
+            ->add('phone_1')
             
             ->add('_action', 'actions', array(
                 'actions' => array(
@@ -114,7 +115,7 @@ class OwnerAdmin extends Admin
         $datagridMapper
             ->add('lastname')
             ->add('name')
-            ->add('phone_primary')
+            ->add('phone_1')
             ->add('address')
             /*->add('tags', null, array('field_options' => array('expanded' => true, 'multiple' => true)))*/
         ;
