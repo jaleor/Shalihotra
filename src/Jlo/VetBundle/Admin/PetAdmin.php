@@ -37,6 +37,8 @@ class PetAdmin extends Admin
      */
     protected function configureFormFields(FormMapper $formMapper)
     {
+        $subject = $this->getSubject();
+        
         $formMapper
             ->with('General', array('class'=>'col-md-6'))
                 ->add('name')
@@ -54,6 +56,7 @@ class PetAdmin extends Admin
                 ->add('owner', 'sonata_type_model_list',    array(),
                                                             array('placeholder' => 'Seleccione el dueño'))
                 ->add('notes')
+                ->add('vaccines', 'text', array('required' => false))
             ->end()
                 
             ->with('Características', array(    'class'=>'col-md-6',
@@ -68,7 +71,14 @@ class PetAdmin extends Admin
                                                                     'attr' => array(
                                                                     'placeholder' => 'Desconocida',
                                                                     'data-date-format' => 'dd/MM/yyyy',
-                                                                    )))
+                                                                    )));
+        
+        if ($subject->getId() && $subject->getBirthdate()) {
+            $formMapper
+                ->add('age', 'text', array('disabled' => true, 'required' => false));
+        }
+        
+        $formMapper
                 ->add('gender', 'choice', array('choices' => array( 'Unknown' => 'Desconocido',
                                                                      'Male' => 'Male',
                                                                      'Female' => 'Female'),
@@ -79,7 +89,7 @@ class PetAdmin extends Admin
             ->end()
         ;
         
-        $subject = $this->getSubject();
+        
 
         if ($subject->getId()) {
             $formMapper

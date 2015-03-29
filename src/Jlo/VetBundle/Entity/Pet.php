@@ -191,7 +191,10 @@ class Pet
     
     public function __toString() {
         if ($this->getId())
-            return $this->getName() . ' (' . $this->getBreed() . ')';
+            if ($this->getBreed())
+                return $this->getName() . ' (' . $this->getBreed() . ')';
+            else
+                return $this->getName();
         else
             return 'Nuevo';
     }
@@ -383,7 +386,7 @@ class Pet
         //Debug::dump($vaccines);
         //die;
         //return new ArrayCollection($vaccines);
-        return implode(' ', $vaccines);
+        return implode(', ', $vaccines);
     }        
     
     public function setVaccines($array)
@@ -391,5 +394,16 @@ class Pet
         
     }
     
+    public function getAge()
+    {
+        if ($this->getBirthdate()) {
+            $datetime1 = $this->getBirthdate();
+            $datetime2 = new \DateTime();
+            $interval = $datetime1->diff($datetime2);
+            return $interval->format('%y años, %m meses, %d días');
+        }
+        
+        return 'Desconocida';
+    }
 
 }

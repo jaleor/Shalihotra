@@ -170,6 +170,10 @@
                 <source>Owner Address</source>
                 <target>Dirección</target>
             </trans-unit>                       
+            <trans-unit id="43">
+                <source>Age</source>
+                <target>Edad</target>
+            </trans-unit>                                   
         </body>
     </file>
 </xliff>

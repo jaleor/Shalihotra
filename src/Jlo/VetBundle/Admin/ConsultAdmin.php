@@ -52,16 +52,18 @@ class ConsultAdmin extends Admin
                                                                         'attr' => array('class' => 'form-control'),
                                                                         ))*/
             ->end()
+            
+            ->with('  ', array('class' => 'col-md-12'))
+                ->add('cause', null, array('required' => false, 'attr' => array('rows' => 4)))
+                ->add('diagnosis', null, array('required' => false, 'attr' => array('rows' => 4)))
+                ->add('treatment', null, array('required' => false, 'attr' => array('rows' => 4)))
+            ->end()
+                
             ->with('Vacunas', array('class' => 'col-md-6'))
                 ->add('vaccines', 'sonata_type_model', array(   'expanded' => false, 
                                                                 'multiple' => true,
                                                                 'btn_add' => 'Nueva vacuna'))
-            ->end()    
-            ->with('  ', array('class' => 'col-md-12'))
-                ->add('cause', null, array('required' => false))
-                ->add('diagnosis', null, array('required' => false))
-                ->add('treatment', null, array('required' => false))
-            ->end()
+            ->end()        
          
         ;
     }
