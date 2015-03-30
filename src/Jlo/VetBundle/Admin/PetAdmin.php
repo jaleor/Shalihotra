@@ -56,7 +56,8 @@ class PetAdmin extends Admin
                 ->add('owner', 'sonata_type_model_list',    array(),
                                                             array('placeholder' => 'Seleccione el dueño'))
                 ->add('notes')
-                ->add('vaccines', 'text', array('required' => false))
+                ->add('vaccines', 'text', array('required' => false,
+                                                'disabled' => true))
             ->end()
                 
             ->with('Características', array(    'class'=>'col-md-6',
@@ -124,6 +125,10 @@ class PetAdmin extends Admin
                 'inline' => 'table',
                 'sortable' => 'position',
             ))
+            
+            ->end()
+            ->with('Archivos', array('collapsed' => true,'class'=>'col-md-12'))
+            ->end()
         ;
         }
         

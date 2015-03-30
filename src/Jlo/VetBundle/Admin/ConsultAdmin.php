@@ -45,6 +45,7 @@ class ConsultAdmin extends Admin
                                                                     'format' => 'dd/MM/yyyy HH:mm',
                                                                     'attr' => array(
                                                                     'data-date-format' => 'dd/MM/yyyy HH:mm',
+                                                                        'style'=> 'width:10em'
                                                                     )))
                 /*->add('pet', 'sonata_type_model_autocomplete', array(   'required' => true,
                                                                         'property'=>'name',
@@ -62,7 +63,8 @@ class ConsultAdmin extends Admin
             ->with('Vacunas', array('class' => 'col-md-6'))
                 ->add('vaccines', 'sonata_type_model', array(   'expanded' => false, 
                                                                 'multiple' => true,
-                                                                'btn_add' => 'Nueva vacuna'))
+                                                                'btn_add' => 'Nueva vacuna'),array(
+                                                                ))
             ->end()        
          
         ;
