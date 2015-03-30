@@ -104,6 +104,7 @@ class PetAdmin extends Admin
                 'required' => false,
                 'by_reference' => false,
                 'label' => false,
+                
                 'type_options' => array(
                     // Prevents the "Delete" option from being displayed
                     'delete' => false,
@@ -124,6 +125,8 @@ class PetAdmin extends Admin
                 'edit' => 'inline',
                 'inline' => 'table',
                 'sortable' => 'position',
+                //'link_parameters'   => array('context' => $context),
+                'admin_code'        => 'jlo.vet.admin.consult',
             ))
             
             ->end()

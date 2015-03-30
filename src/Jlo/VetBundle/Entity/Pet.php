@@ -374,7 +374,16 @@ class Pet
      */
     public function getConsults()
     {
+        
+        // AGREGAR FILTRADO (LIMITADO A LAS ULTIMAS CONSULTAS) Y ORDEN DESC
         return $this->consults;
+        /*$my_consults = [];
+        foreach ($this->consults as $consult) {
+            if ($consult->getTreatment() == 'x')
+                $my_consults[] = $consult;
+        }
+        
+        return $my_consults;*/
     }
     
     public function getVaccines()
