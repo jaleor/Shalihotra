@@ -62,6 +62,7 @@ class ConsultAdmin extends Admin
                 
             ->with('Vacunas', array('class' => 'col-md-6'))
                 ->add('vaccines', 'sonata_type_model', array(   'expanded' => false, 
+                                                                'label' => 'Vacunas aplicadas',
                                                                 'multiple' => true,
                                                                 'btn_add' => 'Nueva vacuna'),array(
                                                                 ))

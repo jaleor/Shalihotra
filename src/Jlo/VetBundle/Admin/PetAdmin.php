@@ -40,7 +40,7 @@ class PetAdmin extends Admin
         $subject = $this->getSubject();
         
         $formMapper
-            ->with('General', array('class'=>'col-md-6'))
+            ->with('General', array('class'=>'col-md-8'))
                 ->add('name')
                 ->add('specie')
                 ->add('breed', 'sonata_type_model_autocomplete', array('property' => 'name',
@@ -52,14 +52,14 @@ class PetAdmin extends Admin
                                                                         'attr' => array('class' => 'form-control'),
                                                                         ))*/
                 /*->add('owner', 'sonata_type_admin', array('delete' => false))*/
-                ->add('owner', 'sonata_type_model_list',    array(),
+                ->add('owner', 'sonata_type_model_list',    array('btn_list' => 'Seleccionar'),
                                                             array('placeholder' => 'Seleccione el dueño'))
                 ->add('notes')
                 ->add('vaccines', 'text', array('required' => false,
                                                 'disabled' => true))
             ->end()
                 
-            ->with('Características', array(    'class'=>'col-md-6',                                
+            ->with('Características', array(    'class'=>'col-md-4',                                
                                                 ))
                 ->add('birthdate', 'sonata_type_date_picker', array('required' => false,
                                                                     'dp_language' => 'es',
@@ -69,7 +69,7 @@ class PetAdmin extends Admin
                                                                     'widget' => 'single_text',
                                                                     'datepicker_use_button' => false,
                                                                     'attr' => array(
-                                                                    'class' => 'col-xs-4',
+                                                                    //'class' => 'col-xs-4',
                                                                     'placeholder' => 'Desconocida',
                                                                     'data-date-format' => 'dd/MM/yyyy',
                                                                     )));
@@ -90,7 +90,11 @@ class PetAdmin extends Admin
             ->end()
         ;
         
-        
+        /*$formMapper
+            ->with('Foto', array('class' => 'col-md-4'))
+                ->add('color', null, array('required' => false))
+            ->end();*/
+                
 
         if ($subject->getId()) {
             $formMapper
@@ -99,7 +103,8 @@ class PetAdmin extends Admin
                 ->add('vaccines', 'text', array('read_only' => true, 'label' => false))
             ->end()*/
                 
-            ->with('Historia Clínica', array(   'class'=>'col-md-12',
+            ->with('Historia Clínica', array(   'description' => 'Se listan las últimas 10 consultas del paciente. <a href="http://www.google.com.ar">Pulse para ver todas las consultas del paciente</a>',
+                                                'class'=>'col-md-12',
                                                 'box_class'   => 'box box-solid box-success'))
                 ->add('consults', 'sonata_type_collection', array(
                 'required' => false,

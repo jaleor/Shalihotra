@@ -126,9 +126,11 @@ file that was distributed with this source code.
                 {% block sonata_nav %}
                     {% if admin_pool is defined %}
                         <nav class="navbar navbar-static-top" role="navigation">
+                            {#
                             <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
                                 <span class="sr-only">Toggle navigation</span>
                             </a>
+                            #}
 
                             <div class="navbar-left">
                                 {% block sonata_breadcrumb %}
@@ -137,11 +139,11 @@ file that was distributed with this source code.
                                             <ol class="nav navbar-top-links breadcrumb">
                                                 {% if _breadcrumb is empty %}
                                                     {% if action is defined %}
-                                                        {% for menu in admin.breadcrumbs(action) %}
+                                                        {% for menu in admin.breadcrumbs(action) %}                                                            
                                                             {% if not loop.last  %}
                                                                 <li>
                                                                     {% if menu.uri is not empty %}
-                                                                        <a href="{{ menu.uri }}">{{ menu.label|raw }}</a>
+                                                                        <a href="{{ menu.uri }}">{{ menu.label|raw|trans }}</a>
                                                                     {% else %}
                                                                         {{ menu.label }}
                                                                     {% endif %}
