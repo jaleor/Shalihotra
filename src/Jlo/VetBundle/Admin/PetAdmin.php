@@ -45,8 +45,7 @@ class PetAdmin extends Admin
                 ->add('specie')
                 ->add('breed', 'sonata_type_model_autocomplete', array('property' => 'name',
                                                                         'placeholder' => 'Raza sin especificar',
-                                                                        
-                                                                        'attr' => array('class' => 'form-control', 'allowClear' => true)
+                                                                        'attr' => array('class' => 'form-control', 'data-sonata-select2-allow-clear'=>'true')
                                                                         ))
                 /*->add('owner', 'sonata_type_model_autocomplete', array( 'property'=>'name',
                                                                         'placeholder' => 'Ingrese un dueño',
@@ -60,8 +59,8 @@ class PetAdmin extends Admin
                                                 'disabled' => true))
             ->end()
                 
-            ->with('Características', array(    'class'=>'col-md-6',
-                                                'box_class'   => 'box box-solid box-danger'))
+            ->with('Características', array(    'class'=>'col-md-6',                                
+                                                ))
                 ->add('birthdate', 'sonata_type_date_picker', array('required' => false,
                                                                     'dp_language' => 'es',
                                                                     'dp_use_current' => false,
@@ -70,13 +69,14 @@ class PetAdmin extends Admin
                                                                     'widget' => 'single_text',
                                                                     'datepicker_use_button' => false,
                                                                     'attr' => array(
+                                                                    'class' => 'col-xs-4',
                                                                     'placeholder' => 'Desconocida',
                                                                     'data-date-format' => 'dd/MM/yyyy',
                                                                     )));
         
         if ($subject->getId() && $subject->getBirthdate()) {
             $formMapper
-                ->add('age', 'text', array('disabled' => true, 'required' => false));
+                ->add('age', 'text', array('disabled' => true, 'required' => false, 'attr' => array('class' => 'col-xs-4')));
         }
         
         $formMapper
@@ -99,7 +99,8 @@ class PetAdmin extends Admin
                 ->add('vaccines', 'text', array('read_only' => true, 'label' => false))
             ->end()*/
                 
-            ->with('Historia Clínica', array('class'=>'col-md-12'))
+            ->with('Historia Clínica', array(   'class'=>'col-md-12',
+                                                'box_class'   => 'box box-solid box-success'))
                 ->add('consults', 'sonata_type_collection', array(
                 'required' => false,
                 'by_reference' => false,
