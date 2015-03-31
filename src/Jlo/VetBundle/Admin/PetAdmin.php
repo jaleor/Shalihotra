@@ -174,14 +174,35 @@ class PetAdmin extends Admin
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
-            ->add('name')
-            ->add('specie')
-            ->add('owner.name')
-            ->add('owner.lastname')
-            ->add('owner.address')
-            ->add('owner.phone_1')
-            /*->add('tags', null, array('field_options' => array('expanded' => true, 'multiple' => true)))*/
+            ->add('name', null, array('show_filter'=>true))
+            ->add('specie', null)
+                
+            ->add('buscar', 'doctrine_orm_callback', array( 'show_filter'=>true,
+                                                                    'callback' => array($this, 'getFullTextFilter'),
+                                                                    'field_type' => 'text'))
+                
+            //->add('owner.name', null, array('show_filter'=>true))
+            //->add('owner.lastname', null, array('show_filter'=>true))
+            ->add('owner.address', null, array('show_filter'=>true))
+            ->add('owner.phone_1', null, array('show_filter'=>true))            
         ;
+    }
+    
+    public function getFullTextFilter($queryBuilder, $alias, $field, $value)
+    {
+        if (!$value['value']) {
+            return;
+        }
+        
+        $queryBuilder->leftJoin(sprintf('%s.owner', $alias), 'u');
+        
+        $queryBuilder->andWhere($queryBuilder->expr()->orX(
+            $queryBuilder->expr()->like('u.name', $queryBuilder->expr()->literal('%' . $value['value'] . '%')),
+            $queryBuilder->expr()->like('u.lastname', $queryBuilder->expr()->literal('%' . $value['value'] . '%'))
+            //$queryBuilder->expr()->like($alias.'.lastName', $queryBuilder->expr()->literal('%' . $value['value'] . '%'))
+        ));
+        
+        return true;
     }
     
     public function prePersist($pet) {
