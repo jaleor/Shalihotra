@@ -1,5 +1,19 @@
 {% extends 'SonataAdminBundle:Form:form_admin_fields.html.twig' %}
 
+
+{% block field_widget %}
+{% spaceless %}
+    {% if read_only %}
+        <span {{ block('widget_container_attributes') }} >
+            {{ value|default('&nbsp')|raw }}
+        </span>
+    {% else %}
+        {% set type = type|default('text') %}
+        <input type="{{ type }}" {{ block('widget_attributes') }} value="{{ value }}" />
+    {% endif %}
+{% endspaceless %}
+{% endblock field_widget %}
+
 {% block my_block %}
 
 {% endblock %}

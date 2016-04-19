@@ -113,8 +113,8 @@ class OwnerAdmin extends Admin
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
-            ->add('lastname')
-            ->add('name')
+            ->add('lastname', null, array('show_filter'=>true))
+            ->add('name', null, array('show_filter'=>true))
             ->add('phone_1')
             ->add('address')
             /*->add('tags', null, array('field_options' => array('expanded' => true, 'multiple' => true)))*/

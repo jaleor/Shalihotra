@@ -39,7 +39,7 @@ class ConsultAdmin extends Admin
     {
         $formMapper
             ->with(' ', array('class' => 'col-md-6'))
-                ->add('date', 'sonata_type_datetime_picker', array( 'datepicker_use_button' => false,
+                ->add('date', 'sonata_type_datetime_picker', array( 'datepicker_use_button' => true,
                                                                     'dp_language' => 'es',
                                                                     'dp_use_current' => false,
                                                                     'format' => 'dd/MM/yyyy HH:mm',

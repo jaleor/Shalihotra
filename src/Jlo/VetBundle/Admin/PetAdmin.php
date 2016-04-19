@@ -76,7 +76,7 @@ class PetAdmin extends Admin
         
         if ($subject->getId() && $subject->getBirthdate()) {
             $formMapper
-                ->add('age', 'text', array('disabled' => true, 'required' => false, 'attr' => array('class' => 'col-xs-4')));
+                ->add('age', 'text', array('read_only' => true, 'required' => false, 'attr' => array('class' => 'col-xs-4')));
         }
         
         $formMapper
